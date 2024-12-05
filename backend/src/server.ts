@@ -1,23 +1,31 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
+import authRoutes from './routes/auth'; // Adjust path if necessary
+
 
 dotenv.config();
 
 const app = express();
-const PORT = 3000;
 
-// MongoDB Connection
-mongoose.connect(process.env.MONGODB_URI as string)
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('MongoDB connection error:', err));
-
+// Middleware
 app.use(express.json());
 
-app.get('/', (req, res) => {
-  res.send('Hello, MogiTask!');
-});
+// Routes
+app.use('/api/auth', authRoutes);
 
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+
+// Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://0.0.0.0:27017/mogi-task')
+  .then(() => {
+    console.log('Connected to MongoDB');
+  })
+  .catch((err) => {
+    console.error('MongoDB connection error:', err);
+  });
+
+// Start the server
+const port = process.env.PORT || 5000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
 });
