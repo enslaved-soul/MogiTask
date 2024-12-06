@@ -7,7 +7,7 @@ interface TodoListProps {
 
 const TodoList: React.FC<TodoListProps> = ({ todos }) => {
   return (
-    <div>
+    <div style={{padding:'20px' }}>
       {todos.map((todo, index) => (
         <TodoItem key={index} {...todo} />
       ))}

@@ -85,7 +85,7 @@ const Dashboard: React.FC = () => {
                 <span>
                   <strong>{todo.title}</strong> - {todo.description || 'No description'}
                 </span>
-                <button onClick={() => handleDeleteTodo(todo._id)}>Delete</button>
+                <button onClick={() => handleDeleteTodo(todo._id)}>Done</button>
               </li>
             ))}
           </ul>
