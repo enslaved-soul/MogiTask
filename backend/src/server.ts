@@ -1,8 +1,8 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import authRoutes from './routes/auth'; // Adjust path if necessary
-
+import authRoutes from './routes/auth'; 
+import todoRoutes from './routes/todo';
 
 dotenv.config();
 
@@ -13,6 +13,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/todo', todoRoutes);
 
 
 // Connect to MongoDB
