@@ -25,3 +25,8 @@ Thumbs.db
 
 # OS files
 *.swp
+
+#Docker 
+docker-compose.yml
+mogitask-backend.tar
+mogitask-frontend.tar
